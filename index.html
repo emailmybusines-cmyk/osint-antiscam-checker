@@ -1,0 +1,25 @@
+AntiScam | OSINT Checker *{box-sizing:border-box} body{margin:0;background:#0b1020;color:#e5e7eb;font-family:Arial,sans-serif} header{padding:22px 18px;border-bottom:1px solid #263248} header h1{color:#4ade80;margin:0;font-size:25px} header p{color:#94a3b8;font-size:13px} main{max-width:650px;margin:28px auto;padding:0 16px} .panel{background:#111a2e;border:1px solid #293750;border-radius:16px;padding:20px;margin-bottom:18px} h2{margin-top:0} label{display:block;margin:15px 0 8px} select,input{width:100%;padding:13px;border:1px solid #3b4b64;border-radius:9px;background:#0b1020;color:white;font-size:15px} button{width:100%;padding:14px;margin-top:14px;border:0;border-radius:9px;background:#22c55e;color:#052e16;font-weight:bold;font-size:16px} .note{font-size:12px;line-height:1.6;color:#94a3b8} .result{display:none;line-height:1.7} a{color:#4ade80} footer{text-align:center;color:#64748b;font-size:12px;padding:20px} 🛡 AntiScam 
+
+OSINT • Pemeriksaan indikasi penipuan online
+
+Periksa informasi 
+
+Cari informasi melalui layanan pemeriksaan resmi. Website ini tidak melacak GPS atau mengungkap identitas pribadi.
+
+Jenis informasi Nomor rekening Nomor HP Nomor yang ingin diperiksa Lihat cara memeriksa Langkah pemeriksaan 
+
+Buka CekRekening.id ↗ 
+
+Layanan resmi mungkin tidak mendukung pencarian semua jenis nomor. Untuk nomor HP, gunakan sumber laporan tepercaya yang relevan. Hasil yang tidak ditemukan bukan jaminan nomor aman.
+
+Tips keamanan 
+
+• Jangan kirim uang karena tekanan atau ancaman.
+
+• Simpan bukti transaksi dan percakapan.
+
+• Verifikasi laporan melalui sumber tepercaya.
+
+AntiScam versi awal ini tidak terhubung ke database laporan secara otomatis.
+
+AntiScam Checker • Edukasi keamanan digital document.getElementById('checker').addEventListener('submit',function(e){ e.preventDefault(); const type=document.getElementById('type').value; const number=document.getElementById('number').value.trim(); if(!/^[0-9+\-\s]{5,30}$/.test(number)){ alert('Masukkan nomor yang valid, minimal 5 karakter angka.'); return; } document.getElementById('message').textContent= 'Nomor sudah dimasukkan. Belum ada hasil laporan yang diverifikasi untuk nomor ini. Gunakan layanan resmi untuk melakukan pemeriksaan lebih lanjut. Jenis: '+ (type==='rekening'?'rekening':'HP')+'.'; document.getElementById('result').style.display='block'; document.getElementById('result').scrollIntoView({behavior:'smooth'}); }); 
