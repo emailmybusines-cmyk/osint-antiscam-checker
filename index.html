@@ -3,76 +3,126 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AntiScam OSINT Checker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HELIX | OSINT AntiScam</title>
 <style>
+:root{--bg:#080b12;--panel:#101622;--line:#263246;--red:#ff465b;--text:#e8edf7;--muted:#8996aa}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#0b1220;color:#f1f5f9;padding:20px}
-main{max-width:600px;margin:35px auto}
-header{text-align:center;margin-bottom:28px}
-header .icon{font-size:48px}
-h1{font-size:27px;margin:10px 0}
-p{color:#aebbd0;line-height:1.6}
-.card{background:#151f31;padding:22px;border-radius:16px;border:1px solid #2b3950;margin-bottom:18px}
-label{display:block;margin:16px 0 8px;font-weight:bold}
-select,input{width:100%;padding:13px;border-radius:9px;border:1px solid #43516a;background:#0b1220;color:white;font-size:16px}
-button{width:100%;padding:14px;border:0;border-radius:9px;background:#38bdf8;color:#07111e;font-size:16px;font-weight:bold;margin-top:18px}
-.link{display:block;text-align:center;padding:13px;background:#1c9b68;color:white;text-decoration:none;border-radius:9px;margin-top:12px;font-weight:bold}
-.note{font-size:13px;color:#aebbd0}
-footer{text-align:center;color:#8190a8;font-size:12px;margin-top:24px}
+body{margin:0;background:var(--bg);color:var(--text);font:15px Arial,sans-serif}
+header{padding:22px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}
+.logo{background:#ff465b20;border:1px solid var(--red);color:var(--red);padding:10px;font-weight:bold}
+h1{font-size:19px;margin:0}header p{margin:5px 0 0;color:var(--muted);font-size:12px}
+main{max-width:1000px;margin:auto;padding:22px 16px}
+.tag{color:var(--red);font-size:11px;letter-spacing:2px;font-weight:bold}
+h2{font-size:25px;margin:9px 0}
+.sub{color:var(--muted);line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:17px;min-width:0}
+.small{color:var(--muted);font-size:12px}
+.value{font-size:19px;font-weight:bold;margin-top:12px}
+.red{color:var(--red)}
+label{display:block;font-size:13px;margin:15px 0 8px}
+input,select{width:100%;background:#090e17;border:1px solid var(--line);color:white;padding:14px;border-radius:7px;font-size:15px}
+button{background:var(--red);color:white;border:0;padding:14px 18px;border-radius:7px;font-weight:bold;width:100%;margin-top:13px;font-size:14px}
+button:active{opacity:.8}
+.result{margin-top:16px;line-height:1.7;overflow-wrap:anywhere}
+.hidden{display:none}
+.pill{display:inline-block;padding:5px 9px;border:1px solid #e5b84a;color:#e5b84a;border-radius:20px;font-size:11px}
+.map{height:170px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(30deg,transparent 48%,#243349 49%,#243349 50%,transparent 51%),linear-gradient(120deg,transparent 48%,#243349 49%,#243349 50%,transparent 51%),#0c1420;background-size:55px 55px;display:grid;place-items:center;text-align:center;padding:15px;color:var(--muted)}
+a{color:#ff8491}
+footer{border-top:1px solid var(--line);padding:20px;color:var(--muted);font-size:12px;line-height:1.7}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.value{font-size:17px}h2{font-size:22px}}
 </style>
 </head>
 <body>
-<main>
 <header>
-<div class="icon">🛡️</div>
-<h1>AntiScam OSINT Checker</h1>
-<p>Bantu periksa dugaan penipuan melalui sumber pemeriksaan resmi.</p>
+ <div class="logo">H</div>
+ <div>
+  <h1>HELIX <span class="red">/</span> ANTISCAM</h1>
+  <p>OSINT INVESTIGATION DASHBOARD</p>
+ </div>
 </header>
+<main>
+ <div class="tag">CYBER INTELLIGENCE / 01</div>
+ <h2>Public Footprint Checker</h2>
+ <p class="sub">Periksa jejak publik nomor telepon atau rekening secara lebih terstruktur.</p>
 
-<section class="card">
-<h2>Periksa Nomor</h2>
-<p>Pilih jenis informasi yang ingin diperiksa. Website ini akan mengarahkanmu ke layanan resmi.</p>
+ <div class="grid">
+  <div class="card"><div class="small">ENGINE STATUS</div><div class="value">● ONLINE</div><p class="small">Antarmuka lokal aktif</p></div>
+  <div class="card"><div class="small">DATABASE</div><div class="value">NOT CONNECTED</div><p class="small">Belum ada database laporan terhubung</p></div>
+  <div class="card"><div class="small">PRIVACY</div><div class="value">PROTECTED</div><p class="small">Tidak meminta akses kamera/GPS</p></div>
+ </div>
 
-<label for="jenis">Jenis pemeriksaan</label>
-<select id="jenis">
-<option value="rekening">Rekening bank / e-wallet</option>
-<option value="hp">Nomor HP</option>
-</select>
+ <section class="card">
+  <div class="tag">SEARCH MODULE</div>
+  <h2 style="font-size:19px">Periksa identitas publik</h2>
+  <form id="searchForm">
+   <label for="kind">Jenis pencarian</label>
+   <select id="kind">
+    <option value="phone">Nomor telepon</option>
+    <option value="account">Nomor rekening</option>
+   </select>
+   <label for="target">Nomor yang ingin diperiksa</label>
+   <input id="target" maxlength="40" placeholder="Masukkan nomor tanpa data tambahan" required>
+   <button type="submit">ANALISIS & CARI JEJAK PUBLIK ↗</button>
+  </form>
+  <div id="result" class="result hidden" aria-live="polite"></div>
+ </section>
 
-<button onclick="periksa()">Buka Sumber Pemeriksaan</button>
-</section>
-
-<section class="card">
-<h2>🔎 Pemeriksaan Resmi</h2>
-<p>Gunakan layanan CekRekening.id untuk memeriksa rekening atau akun pembayaran yang dicurigai. Pemeriksaan nomor HP belum tentu tersedia di layanan tersebut.</p>
-<a class="link" href="https://cekrekening.id/" target="_blank" rel="noopener noreferrer">Buka CekRekening.id ↗</a>
-<p class="note">Hasil pemeriksaan bergantung pada informasi yang tersedia di layanan resmi. Tidak ditemukannya laporan bukan jaminan bahwa suatu akun aman.</p>
-</section>
-
-<section class="card">
-<h2>🛡️ Tips Keamanan</h2>
-<p>• Jangan transfer karena tekanan atau ancaman.</p>
-<p>• Periksa rekening sebelum membayar.</p>
-<p>• Simpan bukti transaksi dan percakapan.</p>
-<p>• Jangan menyebarkan data pribadi orang lain.</p>
-</section>
-
-<footer>AntiScam OSINT Checker · Educational Cybersecurity Project</footer>
+ <div class="grid">
+  <section class="card">
+   <div class="tag">GEO MODULE</div>
+   <h2 style="font-size:18px">Location intelligence</h2>
+   <div class="map">Peta belum terhubung ke data lokasi yang sah.<br>Lokasi tidak dapat ditentukan hanya dari nomor telepon.</div>
+  </section>
+  <section class="card">
+   <div class="tag">INVESTIGATION NOTES</div>
+   <h2 style="font-size:18px">Panduan pemeriksaan</h2>
+   <p class="sub">1. Cari laporan dari sumber tepercaya.</p>
+   <p class="sub">2. Cocokkan nama dan konteks laporan.</p>
+   <p class="sub">3. Simpan bukti dan tanggal pemeriksaan.</p>
+  </section>
+ </div>
 </main>
-
+<footer>
+ HELIX ANTISCAM — EDUCATIONAL OSINT PROJECT<br>
+ Hasil pencarian web bukan bukti bahwa seseorang melakukan penipuan.
+ Status database belum terhubung; website ini tidak mengklaim hasil verifikasi otomatis.
+</footer>
 <script>
-function periksa(){
-  const jenis=document.getElementById("jenis").value;
-  if(jenis==="rekening"){
-    window.open("https://cekrekening.id/","_blank","noopener,noreferrer");
-  }else{
-    alert("CekRekening.id berfokus pada rekening dan akun pembayaran. Untuk nomor HP, gunakan kanal pelaporan resmi yang memang mendukung pemeriksaan nomor telepon.");
-  }
-}
+const form=document.getElementById('searchForm');
+form.addEventListener('submit',function(e){
+ e.preventDefault();
+ const raw=document.getElementById('target').value.trim();
+ const kind=document.getElementById('kind').value;
+ const result=document.getElementById('result');
+ if(!raw){return;}
+ if(raw.length<5){
+  result.classList.remove('hidden');
+  result.innerHTML='<span class="pill">INPUT PERLU DIPERIKSA</span><p>Masukkan nomor yang lebih lengkap.</p>';
+  return;
+ }
+ const query=(kind==='phone'?'nomor telepon':'nomor rekening')+' "'+raw+'" penipuan OR scam';
+ result.classList.remove('hidden');
+ result.replaceChildren();
+ const badge=document.createElement('span');
+ badge.className='pill';
+ badge.textContent='BELUM TERVERIFIKASI';
+ const heading=document.createElement('h3');
+ heading.textContent='Pemeriksaan awal selesai';
+ const note=document.createElement('p');
+ note.textContent='Website ini belum terhubung ke database laporan. Lanjutkan dengan pencarian sumber publik; hasilnya perlu diperiksa manual.';
+ const link=document.createElement('a');
+ link.href='https://www.google.com/search?q='+encodeURIComponent(query);
+ link.target='_blank';
+ link.rel='noopener noreferrer';
+ link.textContent='Buka pencarian web untuk nomor ini ↗';
+ result.append(badge,heading,note,link);
+});
 </script>
 </body>
 </html>
+
 
 
 
