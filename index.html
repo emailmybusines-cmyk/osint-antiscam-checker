@@ -1,298 +1,78 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AntiScam OSINT Checker</title>
-
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background: #070b14;
-  color: #e5e7eb;
-  font-family: Arial, sans-serif;
-}
-
-header {
-  padding: 22px 18px;
-  border-bottom: 1px solid #1e293b;
-  text-align: center;
-}
-
-.logo {
-  font-size: 28px;
-  font-weight: bold;
-  color: #22c55e;
-}
-
-.subtitle {
-  color: #94a3b8;
-  font-size: 13px;
-  margin-top: 6px;
-}
-
-.container {
-  max-width: 650px;
-  margin: auto;
-  padding: 25px 16px;
-}
-
-.card {
-  background: #0f172a;
-  border: 1px solid #243044;
-  border-radius: 18px;
-  padding: 20px;
-  margin-bottom: 18px;
-}
-
-h2 {
-  margin-top: 0;
-}
-
-label {
-  display: block;
-  margin: 16px 0 8px;
-  color: #cbd5e1;
-}
-
-select,
-input {
-  width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #334155;
-  background: #080d18;
-  color: white;
-  font-size: 15px;
-}
-
-button {
-  width: 100%;
-  margin-top: 16px;
-  padding: 14px;
-  border: 0;
-  border-radius: 10px;
-  background: #22c55e;
-  color: #052e16;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-button:active {
-  transform: scale(0.98);
-}
-
-.result {
-  display: none;
-}
-
-.status {
-  padding: 14px;
-  border-radius: 10px;
-  background: #172033;
-  margin: 15px 0;
-}
-
-.status-title {
-  font-weight: bold;
-  color: #facc15;
-}
-
-.info {
-  color: #94a3b8;
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.source {
-  display: block;
-  margin-top: 15px;
-  padding: 12px;
-  border-radius: 9px;
-  background: #172033;
-  color: #4ade80;
-  text-decoration: none;
-  text-align: center;
-}
-
-.warning {
-  font-size: 12px;
-  color: #94a3b8;
-  line-height: 1.6;
-}
-
-footer {
-  text-align: center;
-  color: #64748b;
-  font-size: 12px;
-  padding: 20px;
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#0b1220;color:#f1f5f9;padding:20px}
+main{max-width:600px;margin:35px auto}
+header{text-align:center;margin-bottom:28px}
+header .icon{font-size:48px}
+h1{font-size:27px;margin:10px 0}
+p{color:#aebbd0;line-height:1.6}
+.card{background:#151f31;padding:22px;border-radius:16px;border:1px solid #2b3950;margin-bottom:18px}
+label{display:block;margin:16px 0 8px;font-weight:bold}
+select,input{width:100%;padding:13px;border-radius:9px;border:1px solid #43516a;background:#0b1220;color:white;font-size:16px}
+button{width:100%;padding:14px;border:0;border-radius:9px;background:#38bdf8;color:#07111e;font-size:16px;font-weight:bold;margin-top:18px}
+.link{display:block;text-align:center;padding:13px;background:#1c9b68;color:white;text-decoration:none;border-radius:9px;margin-top:12px;font-weight:bold}
+.note{font-size:13px;color:#aebbd0}
+footer{text-align:center;color:#8190a8;font-size:12px;margin-top:24px}
 </style>
 </head>
-
 <body>
-
+<main>
 <header>
-  <div class="logo">🛡 AntiScam</div>
-  <div class="subtitle">
-    OSINT • Digital Fraud Checker
-  </div>
+<div class="icon">🛡️</div>
+<h1>AntiScam OSINT Checker</h1>
+<p>Bantu periksa dugaan penipuan melalui sumber pemeriksaan resmi.</p>
 </header>
 
-<div class="container">
+<section class="card">
+<h2>Periksa Nomor</h2>
+<p>Pilih jenis informasi yang ingin diperiksa. Website ini akan mengarahkanmu ke layanan resmi.</p>
 
-  <div class="card">
+<label for="jenis">Jenis pemeriksaan</label>
+<select id="jenis">
+<option value="rekening">Rekening bank / e-wallet</option>
+<option value="hp">Nomor HP</option>
+</select>
 
-    <h2>🔎 Periksa Informasi</h2>
+<button onclick="periksa()">Buka Sumber Pemeriksaan</button>
+</section>
 
-    <p class="info">
-      Masukkan nomor rekening atau nomor HP untuk melihat
-      panduan pemeriksaan dari sumber yang tersedia.
-    </p>
+<section class="card">
+<h2>🔎 Pemeriksaan Resmi</h2>
+<p>Gunakan layanan CekRekening.id untuk memeriksa rekening atau akun pembayaran yang dicurigai. Pemeriksaan nomor HP belum tentu tersedia di layanan tersebut.</p>
+<a class="link" href="https://cekrekening.id/" target="_blank" rel="noopener noreferrer">Buka CekRekening.id ↗</a>
+<p class="note">Hasil pemeriksaan bergantung pada informasi yang tersedia di layanan resmi. Tidak ditemukannya laporan bukan jaminan bahwa suatu akun aman.</p>
+</section>
 
-    <label for="type">
-      Jenis informasi
-    </label>
+<section class="card">
+<h2>🛡️ Tips Keamanan</h2>
+<p>• Jangan transfer karena tekanan atau ancaman.</p>
+<p>• Periksa rekening sebelum membayar.</p>
+<p>• Simpan bukti transaksi dan percakapan.</p>
+<p>• Jangan menyebarkan data pribadi orang lain.</p>
+</section>
 
-    <select id="type">
-      <option value="rekening">
-        Nomor Rekening
-      </option>
-
-      <option value="hp">
-        Nomor HP
-      </option>
-    </select>
-
-    <label for="number">
-      Nomor
-    </label>
-
-    <input
-      id="number"
-      type="text"
-      inputmode="numeric"
-      placeholder="Contoh: 08xxxxxxxxxx"
-      maxlength="30"
-    >
-
-    <button onclick="checkNumber()">
-      🔍 Periksa Sekarang
-    </button>
-
-  </div>
-
-  <div class="card result" id="result">
-
-    <h2>📊 Hasil Pemeriksaan</h2>
-
-    <div class="status">
-
-      <div class="status-title">
-        ⚠️ Belum Terverifikasi
-      </div>
-
-      <p class="info" id="resultText"></p>
-
-    </div>
-
-    <p class="info">
-      <b>Jenis:</b>
-      <span id="resultType"></span>
-    </p>
-
-    <p class="info">
-      <b>Nomor:</b>
-      <span id="resultNumber"></span>
-    </p>
-
-    <a
-      class="source"
-      href="https://cekrekening.id/"
-      target="_blank"
-      rel="noopener"
-    >
-      🌐 Buka CekRekening.id
-    </a>
-
-    <p class="warning">
-      ⚠️ Website ini belum terhubung langsung ke database laporan
-      penipuan. Hasil "belum terverifikasi" bukan berarti nomor
-      tersebut aman dan bukan bukti bahwa seseorang melakukan
-      penipuan.
-    </p>
-
-  </div>
-
-  <div class="card">
-
-    <h2>🛡 Tips Keamanan</h2>
-
-    <p class="info">
-      • Jangan transfer uang karena tekanan atau ancaman.<br><br>
-
-      • Periksa rekening sebelum melakukan pembayaran.<br><br>
-
-      • Simpan bukti transaksi dan percakapan.<br><br>
-
-      • Jangan sebarkan data pribadi seseorang tanpa alasan
-      yang sah.
-    </p>
-
-  </div>
-
-</div>
-
-<footer>
-  AntiScam OSINT Checker<br>
-  Educational Cybersecurity Project
-</footer>
+<footer>AntiScam OSINT Checker · Educational Cybersecurity Project</footer>
+</main>
 
 <script>
-
-function checkNumber() {
-
-  const type =
-    document.getElementById("type").value;
-
-  const number =
-    document.getElementById("number").value.trim();
-
-  if (number.length < 5) {
-
-    alert(
-      "Masukkan nomor yang ingin diperiksa."
-    );
-
-    return;
+function periksa(){
+  const jenis=document.getElementById("jenis").value;
+  if(jenis==="rekening"){
+    window.open("https://cekrekening.id/","_blank","noopener,noreferrer");
+  }else{
+    alert("CekRekening.id berfokus pada rekening dan akun pembayaran. Untuk nomor HP, gunakan kanal pelaporan resmi yang memang mendukung pemeriksaan nomor telepon.");
   }
-
-  document.getElementById("result").style.display =
-    "block";
-
-  document.getElementById("resultNumber").textContent =
-    number;
-
-  document.getElementById("resultType").textContent =
-    type === "rekening"
-      ? "Nomor Rekening"
-      : "Nomor HP";
-
-  document.getElementById("resultText").textContent =
-    "Website belum memiliki akses langsung ke database laporan. Gunakan sumber resmi untuk melakukan pemeriksaan lebih lanjut.";
-
-  document.getElementById("result")
-    .scrollIntoView({
-      behavior: "smooth"
-    });
 }
-
 </script>
-
 </body>
-</html> 
+</html>
+
+
+
